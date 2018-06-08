@@ -1,0 +1,16 @@
+ext {
+    // 用于编译的SDK版本
+    model_bj = 1231231231
+
+    // 用于Gradle编译项目的工具版本
+    BUILD_TOOLS_VERSION = "26.1.0"
+
+    // 最低支持Android版本
+    MIN_SDK_VERSION = 14
+
+    // 目标版本
+    TARGET_SDK_VERSION = 23
+
+    APPCOMPAT_VERSION = '23.2.1'
+
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bottom_nav_first"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:title="首页"
+        />
+
+    <item
+        android:id="@+id/bottom_nav_home"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:title="家校"
+        />
+
+    <item
+        android:id="@+id/bottom_nav_kejian"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:title="课件"
+       />
+
+    <item
+        android:id="@+id/bottom_nav_shop"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:title="商城"
+       />
+    <item
+        android:id="@+id/bottom_nav_my"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:title="我"
+        />
+</menu>

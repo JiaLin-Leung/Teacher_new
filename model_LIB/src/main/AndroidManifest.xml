@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tbkt.model_lib">
+    <uses-permission
+        android:name="android.permission.RECORD_AUDIO">
+    </uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <application
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity_LIB">
+        </activity>
+        <activity android:name=".Tools.VideoRecordActivity"></activity>
+        <activity android:name=".Tools.playback"></activity>
+        <activity android:name=".zxing.CaptureActivity"/>
+    </application>
+
+</manifest>

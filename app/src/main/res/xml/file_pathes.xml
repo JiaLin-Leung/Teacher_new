@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--注：每个共享路径的name不能相同 path为""表示根目录下所有文件-->
+    <external-path path="[Environment.getExternalStorageDirectory()]/revoeye" name="head" />
+    />
+</paths>
