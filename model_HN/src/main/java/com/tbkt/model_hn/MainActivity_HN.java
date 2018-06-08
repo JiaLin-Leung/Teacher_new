@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -21,7 +22,13 @@ import com.tbkt.model_hn.fragment.kejianFragment;
 import com.tbkt.model_lib.Tools.Content;
 import com.tbkt.model_lib.Tools.LogUtils;
 import com.tbkt.model_lib.Tools.Util;
+/**
+ * @Author: DBJ 
+ * @Date: 2018/6/8 11:21
 
+ * @Description:
+ *
+ */
 @Route(path = Content.GOTO_HENAN)
 public class MainActivity_HN extends AppCompatActivity{
     FrameLayout content ;
@@ -62,10 +69,14 @@ public class MainActivity_HN extends AppCompatActivity{
 
     };
     private void init() {
+
         bottomNavigationItemView=findViewById(R.id.bottom_nav);
+//        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_first).set;
+        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_first).setTitle("动态更换");
+//        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_my).setVisible(false);
         bottomNavigationItemView.enableAnimation(true);
         bottomNavigationItemView.enableShiftingMode(false);
-        bottomNavigationItemView.enableItemShiftingMode(true);
+        bottomNavigationItemView.enableItemShiftingMode(false);
         bottomNavigationItemView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         content=(FrameLayout)findViewById(R.id.framelayout);
         manager=getSupportFragmentManager();

@@ -10,7 +10,13 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.tbkt.model_lib.R;
-
+/**
+ * @Author: DBJ
+ * @Date: 2018/6/8 11:16
+  *
+ * @Description: 视频回访
+ *
+ */
 public class playback extends Activity{
 	VideoView vv;
 	MovieRecorderView mRecorderView;

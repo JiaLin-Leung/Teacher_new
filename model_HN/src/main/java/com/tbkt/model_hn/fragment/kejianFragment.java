@@ -8,7 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tbkt.model_hn.R;
-
+/**
+ * @Author: DBJ
+ * @Date: 2018/6/8 11:22
+ * @Description: 测试首页底部导航栏
+ *
+ */
 
 public class kejianFragment extends Fragment {
     @Override

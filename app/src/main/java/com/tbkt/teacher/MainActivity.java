@@ -48,7 +48,13 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
 
+/**
+ * @Author: DBJ
+ * @Date: 2018/6/8 11:21
 
+ * @Description:
+ *
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener,ActionSheet.ActionSheetListener{
     @Bind(R.id.toBJ)
     Button toBJ;
@@ -122,10 +128,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
                 }
                 break;
             case R.id.toluyin:
+                //去录视频
                 Intent intent =new Intent(MainActivity.this, VideoRecordActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tosaoyisao:
+                //去摇一摇
                 ARouter.getInstance().build(Content.GOTO_SCAN).navigation();
                 break;
         }

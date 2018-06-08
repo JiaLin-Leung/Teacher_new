@@ -24,18 +24,25 @@ import android.widget.Toast;
 import com.tbkt.model_lib.Base.BaseActivity;
 import com.tbkt.model_lib.R;
 import com.tbkt.model_lib.bean.VideoInfo;
-
+/**
+ * @Author: DBJ
+ * @Date: 2018/6/8 11:19
+ * @Description:  ；录视频Activity
+ *
+ */
 public class VideoRecordActivity extends BaseActivity {
-
+	//点击录视频
 	private Button shortbutton;
+	//视频工具类
 	private MovieRecorderView mrecord;
+	//视频保存文件
 	private File videopath;
 	private Toast toast;
 
 	private Context context;
-
+	//视频保存地址
 	private String video_path;
-
+	//视频实体类
 	private VideoInfo info;
 
 
@@ -54,7 +61,7 @@ public class VideoRecordActivity extends BaseActivity {
 
 		requestMyPermission(new String[]{
 				Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO});
-				//点击拍视频
+		//点击拍视频
 		shortbutton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View view, MotionEvent event) {
