@@ -2,17 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5f9ff"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#5e89ef"
+        android:background="@color/zhuti"
         android:gravity="center"
-        android:text="登录"
-        android:textColor="#ffffff"
+        android:text="@string/login"
+        android:textColor="@color/white"
         android:textSize="18dp" />
 
 

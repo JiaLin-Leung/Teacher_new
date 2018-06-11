@@ -11,6 +11,9 @@ public class LogUtils {
         *
         */
     public static void showLog(String message,String information){
-        Log.e("tbkt"+message,information);
+        Log.e("tbkt",information);
+    }
+    public static void showLog(String information){
+        Log.e("dbj",information);
     }
 }

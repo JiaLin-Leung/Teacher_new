@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -22,6 +21,8 @@ import com.tbkt.model_hn.fragment.kejianFragment;
 import com.tbkt.model_lib.Tools.Content;
 import com.tbkt.model_lib.Tools.LogUtils;
 import com.tbkt.model_lib.Tools.Util;
+
+
 /**
  * @Author: DBJ 
  * @Date: 2018/6/8 11:21
@@ -47,6 +48,7 @@ public class MainActivity_HN extends AppCompatActivity{
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             int i=item.getItemId();
             if (i == R.id.bottom_nav_first) {
                 FirstFragment first= new FirstFragment();
@@ -69,23 +71,49 @@ public class MainActivity_HN extends AppCompatActivity{
 
     };
     private void init() {
-
         bottomNavigationItemView=findViewById(R.id.bottom_nav);
-//        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_first).set;
-        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_first).setTitle("动态更换");
-//        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_my).setVisible(false);
+//        bottomNavigationItemView.setItemIconTintList(null);
+//        addBadgeAt(0,99);
+        //动态设置底部导航栏名字
+        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_first).setTitle("ijjj");
+        //动态设置底部导航栏图标
+        bottomNavigationItemView.getMenu().findItem(R.id.bottom_nav_first).setIcon(R.mipmap.first);
+        //动态设置底部导航栏item隐藏
+        bottomNavigationItemView.getMenu().removeItem(R.id.bottom_nav_my);
+//        //动态设置底部导航栏item隐藏
+//        bottomNavigationItemView.getMenu().removeItem(R.id.bottom_nav_shop);
+        //设置底部动画
         bottomNavigationItemView.enableAnimation(true);
+        //取消位移
         bottomNavigationItemView.enableShiftingMode(false);
+        //取消位移动画
         bottomNavigationItemView.enableItemShiftingMode(false);
+        //设置选中监听
         bottomNavigationItemView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         content=(FrameLayout)findViewById(R.id.framelayout);
         manager=getSupportFragmentManager();
         FirstFragment first= new FirstFragment();
         replace(first,"first");
     }
+    //切换fragment
     private void replace(Fragment fragment,String index){
         transaction = manager.beginTransaction();
         transaction.replace(R.id.framelayout, fragment,index);
         transaction.commit();
     }
+//    private Badge addBadgeAt(int position, int number) {
+//        // add badge
+//        return new QBadgeView(this)
+//                .setBadgeNumber(number)
+//                .setGravityOffset(12, 2, true)
+//                .bindTarget(bottomNavigationItemView.getBottomNavigationItemView(position))
+//                .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
+//                    @Override
+//                    public void onDragStateChanged(int dragState, Badge badge, View targetView) {
+//                        if (Badge.OnDragStateChangedListener.STATE_SUCCEED == dragState)
+//                            Toast.makeText(MainActivity_HN.this, "00", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    }
+
 }

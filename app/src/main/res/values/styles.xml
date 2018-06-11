@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="Theme.Design.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -15,7 +15,7 @@
         <item name="android:layout_marginLeft">14dp</item>
         <item name="android:layout_marginRight">14dp</item>
         <item name="android:layout_marginTop">30dp</item>
-        <item name="android:background">@drawable/boder_layout_yuan_hui_yuan</item>
+        <item name="android:background">@drawable/login_bt_qianlan</item>
     </style>
     <style name="match">
         <item name="android:layout_width">match_parent</item>

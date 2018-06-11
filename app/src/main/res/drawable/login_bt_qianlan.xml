@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 <!-- 圆角灰色背景 -->
-    <solid android:color="@color/huise" />
+    <solid android:color="@color/zhuti" />
 
     <corners android:radius="50dip"></corners>
 
