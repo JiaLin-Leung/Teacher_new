@@ -8,6 +8,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -35,6 +38,11 @@ import com.tbkt.model_lib.Tools.Content;
 import com.tbkt.model_lib.Tools.LogUtils;
 import com.tbkt.model_lib.Tools.Util;
 import com.tbkt.model_lib.Tools.VideoRecordActivity;
+import com.tbkt.model_lib.Tools.permission.PermissionEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -64,7 +72,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
     Button toLN;
     @Bind(R.id.button_login)
     Button button_login;
-//    @Bind(R.id.toluyin)
+    //    @Bind(R.id.toluyin)
 //    Button button_paishipin;
     @Bind(R.id.ed_username)
     EditText ed_username;
@@ -73,9 +81,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
     private String username;
     private String password;
     private OkHttpManager mOkHttpManager;
-    private String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-    private String[] permissions1 = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +96,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
 
     @Override
     public void initView() {
-
     }
 
     @Override
@@ -101,7 +105,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.toBJ://去北京
-                ARouter.getInstance().build(Content.GOTO_BEIJING).navigation();
+//                ARouter.getInstance().build(Content.GOTO_BEIJING).navigation();
                 break;
             case R.id.toHN://去河南
                 ARouter.getInstance().build(Content.GOTO_HENAN).navigation();
@@ -119,9 +123,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
 //                  username = ed_username.getText().toString();
 ////                password = ed_password.getText().toString();
 ////                loginServer(username,password);
-                requestMyPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE});
-                Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher);
+                //资源文件转bitmap
+                Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.clear);
                 try {
+                    //上传文件
                     uploadMyFile( saveFile(bitmap,"head"));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -138,6 +143,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
                 break;
         }
     }
+
     /**
      * @Author: DBJ
      * @Date: 2018/6/4 17:38
@@ -173,7 +179,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
         }, params);
     }
 
-
     /**
      * @Author: DBJ
      * @Date: 2018/6/4 17:25
@@ -198,8 +203,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
         },file,"");
     }
 
-
-
     /**
      * 将bitmap保存为File
      *
@@ -208,6 +211,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
      * @throws IOException
      */
     public File saveFile(Bitmap bm, String fileName) throws IOException {
+        Log.e("dbj",bm+"----");
         String path = Environment.getExternalStorageDirectory().getPath() + "/revoeye/";
         File dirFile = new File(path);
         if (!dirFile.exists()) {
@@ -232,103 +236,30 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
      * @param actionSheet
      * @param index
      */
+
     @Override
     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
         if (index == 0) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                int i = ContextCompat.checkSelfPermission(this, permissions[0]);
-                if (i != PackageManager.PERMISSION_GRANTED) {
-                    startRequestPermission();//打开权限
-
-                    getTakePhoto().onPickMultiple(1);
-                } else {
-                    getTakePhoto().onPickMultiple(1);
-                }
-            } else {
-                getTakePhoto().onPickMultiple(1);
-            }
-
+            //调起系统相册
+            getTakePhoto().onPickMultiple(1);
         } else if (index == 1) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                int i = ContextCompat.checkSelfPermission(this, permissions[0]);
-                if (i != PackageManager.PERMISSION_GRANTED) {
-                    startRequestPermission1();//打开权限
-
-                    File file = new File(Environment.getExternalStorageDirectory(), "/revoeye/" + System.currentTimeMillis() + ".jpg");
-                    if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
-                    Uri imageUri = Uri.fromFile(file);
-                    getTakePhoto().onPickFromCapture(imageUri);
-                } else {
-                    File file = new File(Environment.getExternalStorageDirectory(), "/revoeye/" + System.currentTimeMillis() + ".jpg");
-                    if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
-                    Uri imageUri = Uri.fromFile(file);
-                    getTakePhoto().onPickFromCapture(imageUri);
-                }
-            } else {
-                File file = new File(Environment.getExternalStorageDirectory(), "/revoeye/" + System.currentTimeMillis() + ".jpg");
-                if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
-                Uri imageUri = Uri.fromFile(file);
-                getTakePhoto().onPickFromCapture(imageUri);
-            }
+            //调起系统相机
+            File file = new File(Environment.getExternalStorageDirectory(), "/revoeye/" + System.currentTimeMillis() + ".jpg");
+            if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
+            Uri imageUri = Uri.fromFile(file);
+            getTakePhoto().onPickFromCapture(imageUri);
         }
     }
-    private void startRequestPermission() {
-        ActivityCompat.requestPermissions(this, permissions, 320);
-
-    }
-
-
-    private void startRequestPermission1() {
-        ActivityCompat.requestPermissions(this, permissions1, 321);
-    }
-    //调用系统相册 拍照回调
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 321) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    // 判断用户是否 点击了不再提醒。(检测该权限是否还可以申请)
-                    boolean b = shouldShowRequestPermissionRationale(permissions[0]);
-                    if (!b) {
-                        // 提示用户去应用设置界面手动开启权限
-                        //  showDialogTipUserGoToAppSettting();
-                        Util.showMICPopwindow(MainActivity.this);
-                    } else
-                        finish();
-                } else {
-                    Toast.makeText(this, R.string.power_success, Toast.LENGTH_SHORT).show();
-                }
-            }
-        } else if (requestCode == 320) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    // 判断用户是否 点击了不再提醒。(检测该权限是否还可以申请)
-                    boolean b = shouldShowRequestPermissionRationale(permissions[0]);
-                    if (!b) {
-                        // 用户还是想用我的 APP 的
-                        // 提示用户去应用设置界面手动开启权限
-                        //  showDialogTipUserGoToAppSettting();
-                    } else
-                        finish();
-                } else {
-                    Toast.makeText(this, R.string.power_success, Toast.LENGTH_SHORT).show();
-
-                    getTakePhoto().onPickMultiple(1);
-                }
-            }
-        }
-    }
+    //取消调起系统相机
     @Override
     public void takeCancel() {
         super.takeCancel();
     }
-
     @Override
     public TakePhoto getTakePhoto() {
         return super.getTakePhoto();
     }
-
+    //调起成功
     @Override
     public void takeSuccess(final TResult result) {
         super.takeSuccess(result);
@@ -345,10 +276,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
         }
 
     }
-
+    //调起失败
     @Override
     public void takeFail(TResult result, String msg) {
         super.takeFail(result, msg);
     }
-//https://mapi-beta.m.jxtbkt.cn/account/portrait
+
 }

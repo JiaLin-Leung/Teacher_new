@@ -133,7 +133,9 @@ public class EasyPermission {
             Log.i("permission", "onBasicPermissionSuccess==");
 
             //这里代表所有权限申请成功
-            permissionResultCallBack.onBasicPermissionSuccess();
+            if (permissionResultCallBack!=null){
+                permissionResultCallBack.onBasicPermissionSuccess();
+            }
         }
     }
 

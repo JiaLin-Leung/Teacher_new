@@ -1,6 +1,7 @@
 package com.tbkt.model_lib.Base;
 
 import android.app.Activity;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
@@ -17,7 +18,7 @@ public abstract class BaseActivity extends TakePhotoFragmentActivity implements 
 
     public static final int REQUEST_CODE_CAMERA = 1000101;
     public int permissionState;
-
+    private String permissionTag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +80,15 @@ public abstract class BaseActivity extends TakePhotoFragmentActivity implements 
         //根据列出的权限分次获取敏感权限
         EasyPermission.with(this).code(REQUEST_CODE_CAMERA).permissions(permissions).request();
     }
-
+    /**
+     * 判断权限
+     * @param permissions 权限数组
+     */
+    public void requestMyPermission(String permissions,String permission) {
+        //根据列出的权限分次获取敏感权限
+        permissionTag = permission;
+        EasyPermission.with(this).code(REQUEST_CODE_CAMERA).permissions(permissions).request();
+    }
     //必须复写此处的回调，否则无法获取用户授权结果
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -91,20 +100,20 @@ public abstract class BaseActivity extends TakePhotoFragmentActivity implements 
     @Override
     public void onBasicPermissionSuccess() {
         permissionState = 0;
-        EventBus.getDefault().post(new PermissionEvent(0));
+        EventBus.getDefault().post(new PermissionEvent(0,permissionTag));
     }
 
     //用户授权失败，但是未勾选不再提醒
     @Override
     public void onBasicPermissionFailed() {
         permissionState = 1;
-        EventBus.getDefault().post(new PermissionEvent(1));
+        EventBus.getDefault().post(new PermissionEvent(1,permissionTag));
     }
 
     //用户授权失败，且勾选不再提醒
     @Override
     public void onBasicPermissionFailedNeedRational() {
         permissionState = 2;
-        EventBus.getDefault().post(new PermissionEvent(2));
+        EventBus.getDefault().post(new PermissionEvent(2,permissionTag));
     }
 }

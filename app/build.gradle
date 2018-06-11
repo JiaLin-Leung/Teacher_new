@@ -11,7 +11,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
         /**
@@ -28,8 +28,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets{
-        main{
+    sourceSets {
+        main {
             if (isModule.toBoolean()) {
                 manifest.srcFile 'src/main/module/AndroidManifest.xml'
             } else {
@@ -53,10 +53,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //调用相机 拍照
     implementation 'com.jph.takephoto:takephoto_library:4.0.3'
+    //底部弹出窗
     implementation 'com.baoyz.actionsheet:library:1.1.7'
+    //注解框架
     implementation 'com.jakewharton:butterknife:7.0.1'
-
+    implementation 'org.greenrobot:eventbus:3.0.0'
     if (isModule.toBoolean()) {
         implementation project(':model_LIB')
     } else {
