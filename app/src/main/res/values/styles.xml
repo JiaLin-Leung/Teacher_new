@@ -15,7 +15,12 @@
         <item name="android:layout_marginLeft">14dp</item>
         <item name="android:layout_marginRight">14dp</item>
         <item name="android:layout_marginTop">30dp</item>
-        <item name="android:background">@drawable/login_bt_qianlan</item>
+        <item name="android:background">@drawable/login_bt_noseleter</item>
+    </style>
+    <style name="supplenamebtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:background">@drawable/login_bt_noseleter</item>
     </style>
     <style name="match">
         <item name="android:layout_width">match_parent</item>

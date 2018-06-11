@@ -3,11 +3,12 @@
     <string name="login">登陆</string>
     <string name="CustomerService_phone">客服电话：12556185</string>
     <string name="ForgetPassword">忘记密码？</string>
-    <string name="hint_phone">请输入手机号</string>
+    <string name="hint_phone">请输入您的帐号</string>
     <string name="hint_password">请输入密码</string>
     <string name="album">相册</string>
     <string name="photograph">拍照</string>
     <string name="cancle">取消</string>
     <string name="power_success">权限获取成功</string>
-    <string name="zhanghao">1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="password">1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="zhanghao">1234567890</string>
 </resources>

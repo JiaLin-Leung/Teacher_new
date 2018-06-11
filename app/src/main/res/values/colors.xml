@@ -6,4 +6,7 @@
     <color name="white">#FFFFFF</color>
     <color name="huise">#666666</color>
     <color name="black">#000000</color>
+    <!--按钮不能点击颜色 -->
+    <color name="bt_noselecter">#dcdcdc</color>
+    <color name="bt_noseleter_text">#b8b8b8</color>
 </resources>

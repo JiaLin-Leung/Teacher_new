@@ -39,6 +39,7 @@ import com.tbkt.model_lib.Tools.LogUtils;
 import com.tbkt.model_lib.Tools.Util;
 import com.tbkt.model_lib.Tools.VideoRecordActivity;
 import com.tbkt.model_lib.Tools.permission.PermissionEvent;
+import com.tbkt.teacher.Login.LoginActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -123,14 +124,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
 //                  username = ed_username.getText().toString();
 ////                password = ed_password.getText().toString();
 ////                loginServer(username,password);
-                //资源文件转bitmap
-                Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.clear);
-                try {
-                    //上传文件
-                    uploadMyFile( saveFile(bitmap,"head"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+//                //资源文件转bitmap
+//                Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.clear);
+//                try {
+//                    //上传文件
+//                    uploadMyFile( saveFile(bitmap,"head"));
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;
             case R.id.toluyin:
                 //去录视频
