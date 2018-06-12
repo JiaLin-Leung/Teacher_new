@@ -14,4 +14,6 @@
     <string name="blank_name">姓名不能为空</string>
     <string name="noblank_name">姓名长度为2-5个字</string>
     <string name="supplenameinfo">完善姓名信息</string>
+    <string name="selecter_school">选择学校</string>
+
 </resources>
