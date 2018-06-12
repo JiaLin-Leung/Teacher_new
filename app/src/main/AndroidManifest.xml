@@ -14,9 +14,9 @@
     <application
         android:name=".application.myApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/fragment"
+        android:icon="@mipmap/app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/fragment"
+        android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="name">
@@ -29,14 +29,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_pathes" />
         </provider>
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login.LoginActivity"></activity>
+        <activity android:name=".Login.LoginActivity"/>
     </application>
 
 </manifest>
