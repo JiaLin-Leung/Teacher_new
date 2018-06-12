@@ -1,1 +1,1 @@
-include ':app', ':model_HN', ':model_LIB'
+include ':app', ':model_HN', ':model_LIB', ':module_common'

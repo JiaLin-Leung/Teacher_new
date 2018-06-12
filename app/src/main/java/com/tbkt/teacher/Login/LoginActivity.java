@@ -1,5 +1,6 @@
 package com.tbkt.teacher.Login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -15,12 +16,12 @@ import com.tbkt.teacher.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @Author: DBJ
  * @Date: 2018/6/11 9:57
  * @Description:登陆界面
- *
  */
 public class LoginActivity extends BaseActivity {
     @Bind(R.id.login_account)
@@ -29,7 +30,7 @@ public class LoginActivity extends BaseActivity {
     EditText pasw;
     @Bind(R.id.login_btn)
     Button login;
-//    @Bind(R.id.cs_phone)
+    //    @Bind(R.id.cs_phone)
 //    TextView kf_phone;
     @Bind(R.id.get_sms_pass)
     TextView get_sms_pass;
@@ -41,6 +42,7 @@ public class LoginActivity extends BaseActivity {
     private String accountTxt;
     //  密码
     private String passwTxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,7 @@ public class LoginActivity extends BaseActivity {
     public int setLayoutId() {
         return R.layout.activity_login;
     }
+
     @Override
     public void initView() {
         ButterKnife.bind(this);
@@ -64,6 +67,7 @@ public class LoginActivity extends BaseActivity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() != 0) {
@@ -73,6 +77,7 @@ public class LoginActivity extends BaseActivity {
                     iv_clear_pasw.setVisibility(View.GONE);
                 }
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 bt_isselecter();
@@ -95,6 +100,7 @@ public class LoginActivity extends BaseActivity {
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
             }
+
             @Override
             public void afterTextChanged(Editable s) {
                 pasw.setText("");
@@ -120,12 +126,12 @@ public class LoginActivity extends BaseActivity {
      * 判断按钮是否可点击
      */
     private void bt_isselecter() {
-        if (!TextUtils.isEmpty(phone.getText().toString())&&!TextUtils.isEmpty(pasw.getText().toString())) {
+        if (!TextUtils.isEmpty(phone.getText().toString()) && !TextUtils.isEmpty(pasw.getText().toString())) {
             login.setBackgroundResource(R.drawable.login_bt_seleter);
             login.setTextColor(getResources().getColor(R.color.white));
             login.setClickable(true);
             login.setEnabled(true);
-        }else {
+        } else {
             login.setBackgroundResource(R.drawable.login_bt_noseleter);
             login.setTextColor(getResources().getColor(R.color.bt_noseleter_text));
             login.setClickable(false);
@@ -140,7 +146,6 @@ public class LoginActivity extends BaseActivity {
     public void login_logic() {
         accountTxt = phone.getText().toString().trim();
         passwTxt = pasw.getText().toString().trim();
-
 
 
         //获取连续错误后的登录状态  0：可登录状态  1：不可登录状态
@@ -165,8 +170,8 @@ public class LoginActivity extends BaseActivity {
 //        }
 
     }
+
     @Override
     public void initData() {
-
     }
 }

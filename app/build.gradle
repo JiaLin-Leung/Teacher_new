@@ -60,10 +60,13 @@ dependencies {
     //注解框架
     implementation 'com.jakewharton:butterknife:7.0.1'
     implementation 'org.greenrobot:eventbus:3.0.0'
+
     if (isModule.toBoolean()) {
         implementation project(':model_LIB')
+        implementation project(':module_common')
     } else {
         implementation project(':model_HN')
         implementation project(':model_LIB')
+        implementation project(':module_common')
     }
 }

@@ -61,4 +61,5 @@ dependencies {
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     implementation 'com.android.support:design:26.1.0'
     implementation project(':model_LIB')
+    implementation project(':module_common')
 }

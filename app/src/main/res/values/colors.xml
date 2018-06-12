@@ -9,4 +9,11 @@
     <!--按钮不能点击颜色 -->
     <color name="bt_noselecter">#dcdcdc</color>
     <color name="bt_noseleter_text">#b8b8b8</color>
+
+
+    <color name="bt_code_clickable_bg">#fca134</color>
+    <color name="bg_layout">#f9f5ff</color>
+    <color name="text_color">#333333</color>
+    <color name="text_hint_color">#aaaaaa</color>
+    <color name="line_color">#aaaaaa</color>
 </resources>
