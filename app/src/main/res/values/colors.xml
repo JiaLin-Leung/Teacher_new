@@ -10,10 +10,14 @@
     <color name="bt_noselecter">#dcdcdc</color>
     <color name="bt_noseleter_text">#b8b8b8</color>
 
-
+    <!--获取验证码按钮可点击状态的背景色 -->
     <color name="bt_code_clickable_bg">#fca134</color>
+    <!--布局的背景色 -->
     <color name="bg_layout">#f9f5ff</color>
+    <!--文字正常显示颜色 -->
     <color name="text_color">#333333</color>
+    <!--文字hint颜色 -->
     <color name="text_hint_color">#aaaaaa</color>
-    <color name="line_color">#aaaaaa</color>
+    <!--线条的颜色 -->
+    <color name="line_color">#eaeaea</color>
 </resources>
