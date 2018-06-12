@@ -63,10 +63,10 @@ dependencies {
 
     if (isModule.toBoolean()) {
         implementation project(':model_LIB')
-        implementation project(':module_common')
+        implementation project(':model_common')
     } else {
         implementation project(':model_HN')
         implementation project(':model_LIB')
-        implementation project(':module_common')
+        implementation project(':model_common')
     }
 }

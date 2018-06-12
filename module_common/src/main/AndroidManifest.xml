@@ -1,2 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tbkt.module_common" />
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tbkt.model_hn">
+
+    <application
+        tools:replace="name"
+        android:name="com.tbkt.module_common.application_common"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.tbkt.module_common.MainActivity">
+        </activity>
+    </application>
+
+</manifest>

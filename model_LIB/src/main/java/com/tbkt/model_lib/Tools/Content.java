@@ -21,4 +21,9 @@ public class Content {
      * 去LIB扫一扫
      */
     public static final String GOTO_SCAN="/lib/CaptureActivity";
+
+    /**
+     * 去common模块
+     */
+    public static final String GOTO_COMMON="/common/mainActivity";
 }
