@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Design.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/zhuti</item>
+        <item name="colorPrimaryDark">@color/zhuti</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionSheetStyle">@style/ActionSheetStyleiOS7</item>
     </style>

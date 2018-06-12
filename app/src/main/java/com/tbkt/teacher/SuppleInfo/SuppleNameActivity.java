@@ -39,7 +39,6 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        type = getIntent().getStringExtra("type");
-
     }
 
     @Override
@@ -50,7 +49,7 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
     @Override
     public void initView() {
         ButterKnife.bind(this);
-        top_infotxt.setText("完善姓名信息");
+        top_infotxt.setText(R.string.supplenameinfo+"");
         top_btnback.setOnClickListener(this);
         bt_supple.setOnClickListener(this);
         initTextChanged();
@@ -60,22 +59,21 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
         et_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                //按钮可点击状态
                 if (!TextUtils.isEmpty(et_name.getText().toString())) {
                     bt_supple.setBackgroundResource(R.drawable.login_bt_seleter);
                     bt_supple.setTextColor(getResources().getColor(R.color.white));
                     bt_supple.setClickable(true);
                     bt_supple.setEnabled(true);
                 }else {
+                    //按钮不可点击状态
                     bt_supple.setBackgroundResource(R.drawable.login_bt_noseleter);
                     bt_supple.setTextColor(getResources().getColor(R.color.bt_noseleter_text));
                     bt_supple.setClickable(false);
@@ -87,9 +85,7 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void initData() {
-
     }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -100,18 +96,14 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
                 newName = et_name.getText().toString().trim();
                 if (newName.length() >= 2 && newName.length() <= 5) {
                     updateName();
-                }else if ("".equals(newName)){
-                    showShortToast("姓名不能为空");
+                }else if (newName.isEmpty()){
+                    showShortToast(R.string.blank_name+"");
                 }else {
-                    showShortToast("姓名长度为2-5个字");
+                    showShortToast(R.string.noblank_name+"");
                 }
                 break;
         }
     }
-
     private void updateName() {
-
-
-
     }
 }

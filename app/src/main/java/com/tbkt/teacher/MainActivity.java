@@ -3,6 +3,7 @@ package com.tbkt.teacher;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -104,14 +105,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
 ////                password = ed_password.getText().toString();
 ////                loginServer(username,password);
 //                //资源文件转bitmap
-//                Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.clear);
-//                try {
-//                    //上传文件
-//                    uploadMyFile( saveFile(bitmap,"head"));
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.clear);
+                try {
+                    //上传文件
+                    uploadMyFile( saveFile(bitmap,"head"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;
             case R.id.toluyin:
                 //去录视频

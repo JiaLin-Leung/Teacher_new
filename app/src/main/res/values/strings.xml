@@ -11,4 +11,7 @@
     <string name="power_success">权限获取成功</string>
     <string name="password">1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="zhanghao">1234567890</string>
+    <string name="blank_name">姓名不能为空</string>
+    <string name="noblank_name">姓名长度为2-5个字</string>
+    <string name="supplenameinfo">完善姓名信息</string>
 </resources>
