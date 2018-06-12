@@ -1,14 +1,10 @@
 package com.tbkt.teacher.Login;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,13 +24,13 @@ import butterknife.ButterKnife;
  */
 public class LoginActivity extends BaseActivity {
     @Bind(R.id.login_account)
-    AutoCompleteTextView phone;
+    EditText phone;
     @Bind(R.id.login_pasw)
     EditText pasw;
     @Bind(R.id.login_btn)
     Button login;
-    @Bind(R.id.cs_phone)
-    TextView kf_phone;
+//    @Bind(R.id.cs_phone)
+//    TextView kf_phone;
     @Bind(R.id.get_sms_pass)
     TextView get_sms_pass;
     @Bind(R.id.iv_clear_pasw)

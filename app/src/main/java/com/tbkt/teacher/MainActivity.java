@@ -1,31 +1,15 @@
 package com.tbkt.teacher;
 
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
-
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.baoyz.actionsheet.ActionSheet;
@@ -38,12 +22,7 @@ import com.tbkt.model_lib.Tools.Content;
 import com.tbkt.model_lib.Tools.LogUtils;
 import com.tbkt.model_lib.Tools.Util;
 import com.tbkt.model_lib.Tools.VideoRecordActivity;
-import com.tbkt.model_lib.Tools.permission.PermissionEvent;
 import com.tbkt.teacher.Login.LoginActivity;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -170,12 +149,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
         mOkHttpManager.postRequest(MainActivity.this, "http://mapi-beta.m.jxtbkt.cn/account/login/s", new LoadCallBack<String>(MainActivity.this) {
 
             @Override
-            protected void onSuccess(okhttp3.Call call, Response response, String s) {
+            protected void onSuccess(Call call, Response response, String s) {
                 LogUtils.showLog("登陆成功---",s);
             }
 
             @Override
-            protected void onEror(okhttp3.Call call, int statusCode, Exception e) {
+            protected void onEror(Call call, int statusCode, Exception e) {
 
             }
         }, params);
@@ -199,7 +178,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
             }
 
             @Override
-            protected void onEror(okhttp3.Call call, int statusCode, Exception e) {
+            protected void onEror(Call call, int statusCode, Exception e) {
                 Log.e("syw", "shibai:");
             }
         },file,"");
