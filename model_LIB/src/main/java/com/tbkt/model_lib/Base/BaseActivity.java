@@ -5,9 +5,13 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jph.takephoto.app.TakePhotoFragmentActivity;
+import com.tbkt.model_lib.R;
 import com.tbkt.model_lib.Tools.permission.EasyPermission;
 import com.tbkt.model_lib.Tools.permission.PermissionEvent;
 import com.tbkt.model_lib.Tools.permission.PermissionResultCallBack;
@@ -43,6 +47,66 @@ public abstract class BaseActivity extends TakePhotoFragmentActivity implements 
      * 初始化数据方法
      */
     public abstract void initData();
+
+
+
+    /**
+     * 设置标题
+     *
+     * @param title 标题的文本
+     */
+    public void setTitle(String title) {
+        TextView baseTitle = (TextView) findViewById(R.id.tv_top_title);
+        baseTitle.setText(title);
+        initBack();
+    }
+
+    private void initBack(){
+        ImageView ivBack = (ImageView) findViewById(R.id.iv_top_back);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    /**
+     * 抛出返回按钮,如果点击返回需要保存东西,以便于返回的时候页面提示保存
+     * @return 返回键控件
+     */
+    public ImageView getImageBack() {
+        return (ImageView) findViewById(R.id.iv_top_back);
+    }
+
+    /**
+     * 设置标题栏右侧按钮显示状态
+     *
+     * @param visible 显示状态
+     * @param text    显示文字
+     */
+    public void setTopRightButtonVisible(boolean visible, String text) {
+        TextView rightButton = (TextView) findViewById(R.id.tv_right_button);
+        if (visible) {
+            rightButton.setVisibility(View.VISIBLE);
+        } else {
+            rightButton.setVisibility(View.VISIBLE);
+        }
+        rightButton.setText(text);
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                topRightButtonClick();
+            }
+        });
+
+    }
+
+    /**
+     * 标题栏右侧按钮的点击事件
+     */
+    public void topRightButtonClick() {
+    }
 
     /**
      * Toast 公共Toast方法

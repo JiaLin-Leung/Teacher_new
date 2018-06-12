@@ -171,4 +171,11 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void initData() {
     }
+
+    @OnClick(R.id.get_sms_pass )
+    public void toPass(){
+        Intent intent = new Intent(LoginActivity.this,FindPasswordActivity.class);
+        startActivity(intent);
+    }
+
 }
