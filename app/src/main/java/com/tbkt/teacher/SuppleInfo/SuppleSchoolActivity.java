@@ -1,6 +1,5 @@
 package com.tbkt.teacher.SuppleInfo;
 
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -44,19 +43,7 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
     int buMenId, nianJiId, banJiId;
     String schoolName;
     String youzhengbianma="";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        schoolName = "选择学校";
-        //syw 清除学校区域
-//        PreferencesManager.getInstance().putString("youzhengbianma", "");
-//        PreferencesManager.getInstance().putString("school_name", "选择学校");
-//        PreferencesManager.getInstance().putInt("school_id", 0);
-
-        initView();
-        initListener();
-    }
 
     @Override
     public int setLayoutId() {
@@ -65,7 +52,14 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
 
 
     public void initView() {
+        schoolName = "选择学校";
+        //syw 清除学校区域
+//        PreferencesManager.getInstance().putString("youzhengbianma", "");
+//        PreferencesManager.getInstance().putString("school_name", "选择学校");
+//        PreferencesManager.getInstance().putInt("school_id", 0);
 
+
+        initListener();
         tv_city.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

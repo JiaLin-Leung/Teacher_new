@@ -27,21 +27,18 @@ public class SuppleInfoActivity extends BaseActivity implements View.OnClickList
     Button bt_supple_info;
     @Bind(R.id.top_btnback)
     ImageView top_btnback;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        type = getIntent().getStringExtra("type");
-        top_infotxt.setText("完善信息");
-        bt_supple_info.setOnClickListener(this);
-        top_btnback.setOnClickListener(this);
-    }
+
     @Override
     public int setLayoutId() {
-        return 0;
+        return R.layout.activity_suppleinfo;
     }
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        //        type = getIntent().getStringExtra("type");
+        top_infotxt.setText("完善信息");
+        bt_supple_info.setOnClickListener(this);
+        top_btnback.setOnClickListener(this);
     }
 
     @Override

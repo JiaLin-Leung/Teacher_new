@@ -19,15 +19,13 @@ import com.tbkt.model_lib.Base.BaseActivity;
 import com.tbkt.teacher.R;
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.List;
-
 import butterknife.Bind;
 
 /**
- * Created by song on 2017/1/13 0013.  选择学校
+ * @Author: DBJ 
+ * @Date: 2018/6/12 11:43
+ * @Description:
+ *
  */
 public class ChoiceSchoolActivity extends BaseActivity {
 
@@ -41,13 +39,7 @@ public class ChoiceSchoolActivity extends BaseActivity {
     TextView tv_noschool;
     @Bind(R.id.top_infotxt)
     TextView top_infotxt;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-
-
-    }
 
     @Override
     public int setLayoutId() {

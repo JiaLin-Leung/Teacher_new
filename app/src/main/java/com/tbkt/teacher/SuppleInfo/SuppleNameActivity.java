@@ -35,11 +35,7 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
     //确定按钮
     @Bind(R.id.bt_supple)
     Button bt_supple;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        type = getIntent().getStringExtra("type");
-    }
+
 
     @Override
     public int setLayoutId() {
