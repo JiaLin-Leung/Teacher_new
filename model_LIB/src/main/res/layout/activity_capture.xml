@@ -14,24 +14,68 @@
         android:id="@+id/capture_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
-
         <ImageView
             android:id="@+id/capture_mask_top"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_alignParentTop="true"
+            android:visibility="gone"
             />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:color/black"
+            android:orientation="horizontal">
 
-        <include layout="@layout/include_top_view_lib"/>
+            <ImageView
+                android:id="@+id/top_btnback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_arrow_back"
+                android:onClick="onClick" />
+
+            <ImageView
+                android:id="@+id/top_pop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:onClick="onClick"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/top_infotxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/top_pop"
+                android:layout_toRightOf="@id/top_btnback"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="扫一扫"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/capture_crop_view"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_below="@id/capture_mask_top"
-            android:layout_centerHorizontal="true"
+          android:layout_centerInParent="true"
             android:background="@drawable/shadow2">
 
             <ImageView
@@ -44,32 +88,29 @@
                 android:src="@drawable/line"/>
 
         </RelativeLayout>
-
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center"
+            android:layout_alignLeft="@id/capture_crop_view"
+            android:layout_alignRight="@id/capture_crop_view"
+            android:layout_below="@id/capture_crop_view"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/xcp"/>
         <TextView
             android:id="@+id/capture_mask_bottom"
-            android:text="对准试题二维码/交作业二维码"
+            android:text="@string/erweima_text"
             android:gravity="center_horizontal"
             android:paddingTop="30dp"
             android:textSize="16dp"
             android:textColor="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/capture_crop_view"
+            android:layout_below="@id/button_back"
             />
 
-        <Button
-            android:id="@+id/button_back"
-            android:text="手动进入《智能测评学》"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:gravity="center"
-            android:textSize="16dp"
-            android:textColor="#ffffff"
-            android:layout_alignLeft="@id/capture_crop_view"
-            android:layout_alignRight="@id/capture_crop_view"
-            android:layout_below="@id/capture_mask_bottom"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/xcp"/>
+
 
         <ImageView
             android:id="@+id/capture_mask_left"

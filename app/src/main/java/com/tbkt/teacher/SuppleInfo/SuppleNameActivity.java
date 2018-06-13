@@ -1,5 +1,6 @@
 package com.tbkt.teacher.SuppleInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -45,7 +46,7 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
     @Override
     public void initView() {
         ButterKnife.bind(this);
-        top_infotxt.setText(R.string.supplenameinfo+"");
+        top_infotxt.setText(this.getString(R.string.supplenameinfo));
         top_btnback.setOnClickListener(this);
         bt_supple.setOnClickListener(this);
         initTextChanged();
@@ -93,10 +94,12 @@ public class SuppleNameActivity extends BaseActivity implements View.OnClickList
                 if (newName.length() >= 2 && newName.length() <= 5) {
                     updateName();
                 }else if (newName.isEmpty()){
-                    showShortToast(R.string.blank_name+"");
+                    showCenterToastCenter(this.getString(R.string.blank_name));
                 }else {
-                    showShortToast(R.string.noblank_name+"");
+                    showCenterToastCenter(this.getString(R.string.noblank_name));
                 }
+                Intent intent=new Intent(SuppleNameActivity.this,SuppleSchoolActivity.class);
+                startActivity(intent);
                 break;
         }
     }

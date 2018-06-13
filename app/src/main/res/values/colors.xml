@@ -8,7 +8,7 @@
     <color name="black">#000000</color>
     <!--按钮不能点击颜色 -->
     <color name="bt_noselecter">#dcdcdc</color>
-    <color name="bt_noseleter_text">#b8b8b8</color>
+    <color name="bt_noseleter_text">#aaaaaa</color>
 
     <!--获取验证码按钮可点击状态的背景色 -->
     <color name="bt_code_clickable_bg">#fca134</color>

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -19,7 +20,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.zxing.Result;
 import com.tbkt.model_lib.R;
@@ -29,7 +29,6 @@ import com.tbkt.model_lib. zxing.decode.DecodeThread;
 import com.tbkt.model_lib. zxing.utils.BeepManager;
 import com.tbkt.model_lib.zxing.utils.CaptureActivityHandler;
 import com.tbkt.model_lib.zxing.utils.InactivityTimer;
-
 import java.io.IOException;
 import java.lang.reflect.Field;
 
@@ -52,11 +51,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     private boolean isHasSurface = false;
     private Button button_back;
     private ImageView top_btnback;
-
+    private boolean isOpen=false;
     public Handler getHandler() {
         return handler;
     }
-
+    private android.hardware.Camera camera;
+    private android.hardware.Camera.Parameters parameter;
     public CameraManager getCameraManager() {
         return cameraManager;
     }
@@ -73,8 +73,21 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadXCP();
+//                loadXCP();
+                camera = cameraManager.getCamera();
+                parameter = camera.getParameters();
+                // 开灯
+                if (!isOpen) {
+                    parameter.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                    camera.setParameters(parameter);
+                    isOpen = true;
+                } else {  // 关灯
+                    parameter.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                    camera.setParameters(parameter);
+                    isOpen = false;
+                }
             }
+
         });
         scanPreview = (SurfaceView) findViewById(R.id.capture_preview);
         scanContainer = (RelativeLayout) findViewById(R.id.capture_container);
@@ -175,6 +188,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         isHasSurface = false;
+        if (camera != null) {
+            cameraManager.stopPreview();
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.tbkt.model_lib.zxing.camera;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.os.Handler;
@@ -33,7 +34,13 @@ public class CameraManager {
     private boolean initialized;
     private boolean previewing;
     private int requestedCameraId = -1;
-
+    /**
+     * 获取相机的方法
+     * @return camera
+     */
+    public  Camera getCamera(){
+        return camera;
+    }
     public CameraManager(Context context) {
         this.context = context;
         this.configManager = new CameraConfigurationManager(context);
@@ -181,5 +188,6 @@ public class CameraManager {
         }
         return null;
     }
+
 }
 

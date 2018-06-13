@@ -12,6 +12,7 @@ import com.tbkt.teacher.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @Author: DBJ
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
  * @Description:完善信息欢迎页
  *
  */
-public class SuppleInfoActivity extends BaseActivity implements View.OnClickListener {
+public class SuppleInfoActivity extends BaseActivity  {
     String type;
     @Bind(R.id.top_infotxt)
     TextView top_infotxt;
@@ -37,8 +38,7 @@ public class SuppleInfoActivity extends BaseActivity implements View.OnClickList
         ButterKnife.bind(this);
         //        type = getIntent().getStringExtra("type");
         top_infotxt.setText("完善信息");
-        bt_supple_info.setOnClickListener(this);
-        top_btnback.setOnClickListener(this);
+        onClick();
     }
 
     @Override
@@ -46,24 +46,20 @@ public class SuppleInfoActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bt_supple:
-                Intent intent = null;
-//                //syw 跳转完善姓名界面
-//                if ("name".equals(type) || "all".equals(type)) {
-//                    intent = new Intent(SuppleInfoActivity.this, SuppleNameActivity.class);
-//                    intent.putExtra("type", type);
-//                //syw 跳转完善学校信息界面
-//                } else if ("class".equals(type)) {
-//                    intent = new Intent(SuppleInfoActivity.this, SuppleSchoolActivity.class);
-//                }
+    public void onClick() {
+        bt_supple_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent  intent = new Intent(SuppleInfoActivity.this, SuppleNameActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.top_btnback:
+            }
+        });
+        top_btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
-                break;
-        }
+            }
+        });
+
     }
 }

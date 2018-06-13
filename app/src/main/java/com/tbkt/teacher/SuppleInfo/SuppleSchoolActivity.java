@@ -1,5 +1,6 @@
 package com.tbkt.teacher.SuppleInfo;
 
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -9,10 +10,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tbkt.model_lib.Base.BaseActivity;
+import com.tbkt.model_lib.Tools.Util;
+import com.tbkt.model_lib.Tools.picker.OptionsPickerView;
 import com.tbkt.teacher.R;
+import com.tbkt.teacher.SuppleInfo.bean.ProvinceBean;
 
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @Author: DBJ
@@ -21,7 +29,7 @@ import butterknife.Bind;
  * @Description:完善班级
  *
  */
-public class SuppleSchoolActivity extends BaseActivity implements View.OnClickListener {
+public class SuppleSchoolActivity extends BaseActivity {
     @Bind(R.id.top_infotxt)
     TextView top_infotxt;
     @Bind(R.id.top_btnback)
@@ -43,7 +51,12 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
     int buMenId, nianJiId, banJiId;
     String schoolName;
     String youzhengbianma="";
-
+    //城市选择
+    private int selectPosition1,selectPosition2;
+    private OptionsPickerView pvOptions;
+    private ArrayList<ProvinceBean> options1Items = new ArrayList<>();
+    private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
+    private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
 
     @Override
     public int setLayoutId() {
@@ -52,6 +65,7 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
 
 
     public void initView() {
+        ButterKnife.bind(this);
         schoolName = "选择学校";
         //syw 清除学校区域
 //        PreferencesManager.getInstance().putString("youzhengbianma", "");
@@ -59,7 +73,7 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
 //        PreferencesManager.getInstance().putInt("school_id", 0);
 
 
-        initListener();
+
         tv_city.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -106,15 +120,31 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void initData() {
+        //选项1
+        options1Items.add(new ProvinceBean(0,"郑州市","001","00100"));
+        options1Items.add(new ProvinceBean(1,"许昌市","002","00200"));
+        options1Items.add(new ProvinceBean(2,"平顶山市","003","00300"));
 
-    }
-
-    private void initListener() {
-        ll_city.setOnClickListener(this);
-        ll_school.setOnClickListener(this);
-        ll_class.setOnClickListener(this);
-        bt_submit.setOnClickListener(this);
-        top_btnback.setOnClickListener(this);
+        //选项2
+        ArrayList<String> options2Items_01=new ArrayList<>();
+        options2Items_01.add("金水区");
+        options2Items_01.add("惠济区");
+        options2Items_01.add("二七区");
+        options2Items_01.add("高新区");
+        options2Items_01.add("经开区");
+        options2Items_01.add("郑东新区");
+        ArrayList<String> options2Items_02=new ArrayList<>();
+        options2Items_02.add("禹州市");
+        options2Items_02.add("魏都区");
+        options2Items_02.add("襄县市");
+        options2Items_02.add("长葛市");
+        options2Items_02.add("许昌县");
+        ArrayList<String> options2Items_03=new ArrayList<>();
+        options2Items_03.add("新华区");
+        options2Items_03.add("滨河区");
+        options2Items.add(options2Items_01);
+        options2Items.add(options2Items_02);
+        options2Items.add(options2Items_03);
     }
 
     @Override
@@ -125,7 +155,7 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
     }
 
 
-    @Override
+    @OnClick({R.id.supple_school_ll_city,R.id.supple_school_ll_school,R.id.supple_school_ll_class,R.id.top_btnback})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.supple_school_ll_city:
@@ -133,12 +163,12 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
                 break;
             case R.id.supple_school_ll_school:
 //                youzhengbianma = PreferencesManager.getInstance().getString("youzhengbianma", "");
-//                if ("".equals(youzhengbianma)) {
-//                    MyToastUtils.toastText(SuppleSchoolActivity.this, "请先选择地市");
-//                    return;
-//                }
-//                Intent intent = new Intent(this, ChoiceSchoolActivity.class);
-//                startActivity(intent);
+                if ("".equals(tv_city.getText().toString())) {
+                    showCenterToastCenter("请先选择地市");
+                    return;
+                }
+                Intent intent = new Intent(this, ChoiceSchoolActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.supple_school_ll_class:
@@ -168,6 +198,32 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
      * 获取县区信息
      */
     private void getAreaDate() {
+        //选项选择器
+        pvOptions = new OptionsPickerView(this);
+
+        //三级联动效果
+        pvOptions.setPicker(options1Items, options2Items,true);
+        //设置选择的三级单位
+//        pwOptions.setLabels("省", "市", "区");
+//        pvOptions.setTitle("选择城市");
+        pvOptions.setCyclic(false, false, true);
+        //设置默认选中的三级项目
+        //监听确定选择按钮
+        pvOptions.setSelectOptions(0,0);
+        pvOptions.setOnoptionsSelectListener(new OptionsPickerView.OnOptionsSelectListener() {
+
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3) {
+                //返回的分别是级别的选中位置
+                String tx = options1Items.get(options1).getPickerViewText()
+                        + options2Items.get(options1).get(option2);
+                selectPosition1 = options1;
+                selectPosition2 = option2;
+                tv_city.setText(tx);
+            }
+        });
+        pvOptions.setSelectOptions(selectPosition1, selectPosition2);
+        pvOptions.show();
 
     }
 
@@ -180,7 +236,6 @@ public class SuppleSchoolActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void submitSchoolInfo(int buMenId, int nianJiId, int banJiId) {
-
 
     }
 }

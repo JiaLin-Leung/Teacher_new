@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="#ffffff"
     android:gravity="center"
+    android:id="@+id/item_school"
     android:orientation="horizontal">
 
     <TextView
@@ -22,5 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:paddingRight="12dp"
-        android:visibility="gone"/>
+        style="@style/CustomCheckboxTheme"
+        />
 </LinearLayout>

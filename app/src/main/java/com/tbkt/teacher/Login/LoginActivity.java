@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.tbkt.model_lib.Base.BaseActivity;
 import com.tbkt.teacher.R;
+import com.tbkt.teacher.SuppleInfo.SuppleInfoActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,11 +44,7 @@ public class LoginActivity extends BaseActivity {
     //  密码
     private String passwTxt;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login);
-    }
+ 
 
     @Override
     public int setLayoutId() {
@@ -140,10 +137,12 @@ public class LoginActivity extends BaseActivity {
     /***
      * 登录逻辑处理
      */
+    @OnClick(R.id.login_btn)
     public void login_logic() {
         accountTxt = phone.getText().toString().trim();
         passwTxt = pasw.getText().toString().trim();
-
+        Intent intent=new Intent(LoginActivity.this, SuppleInfoActivity.class);
+        startActivity(intent);
 
         //获取连续错误后的登录状态  0：可登录状态  1：不可登录状态
 //         String loginState = PreferencesManager.getInstance().getString("loginState", "0");

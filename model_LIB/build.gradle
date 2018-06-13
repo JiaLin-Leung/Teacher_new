@@ -45,5 +45,6 @@ dependencies {
     implementation 'com.jph.takephoto:takephoto_library:4.0.3'
     implementation 'com.baoyz.actionsheet:library:1.1.7'
     implementation files('libs/zxing.jar')
-    implementation 'com.contrarywind:Android-PickerView:3.2.5'
+//     implementation 'com.contrarywind:Android-PickerView:4.1.4'
+
 }

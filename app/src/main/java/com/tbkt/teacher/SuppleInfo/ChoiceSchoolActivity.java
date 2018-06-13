@@ -116,7 +116,4 @@ public class ChoiceSchoolActivity extends BaseActivity {
     private void searchSchool() {
     }
 
-
-
-
 }

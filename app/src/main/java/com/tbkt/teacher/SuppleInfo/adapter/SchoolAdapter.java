@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tbkt.teacher.R;
@@ -24,10 +26,15 @@ public class SchoolAdapter extends BaseAdapter {
     List<SchoolBean.DataBean> list;
     Context context;
     private LayoutInflater mInflater;
+    //选中标识
+    private int index=-1;
     public SchoolAdapter(Context context, List<SchoolBean.DataBean> list) {
         this.context=context;
         this.list=list;
         mInflater = LayoutInflater.from(context);
+    }
+    public int index(int index){
+        return this.index=index;
     }
     @Override
     public int getCount() {
@@ -51,6 +58,7 @@ public class SchoolAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = mInflater.inflate( R.layout.item_school, null);
             holder.tv_school_name = (TextView) convertView.findViewById(R.id.tv_school_name);
+            holder.item_school=convertView.findViewById(R.id.item_school);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -58,6 +66,8 @@ public class SchoolAdapter extends BaseAdapter {
         return convertView;
     }
     class ViewHolder {
+        CheckBox checkBox;
         TextView tv_school_name;
+        LinearLayout item_school;
     }
 }

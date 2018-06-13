@@ -42,6 +42,8 @@
         <activity android:name=".Login.FindPasswordActivity"/>
         <activity android:name=".SuppleInfo.SuppleInfoActivity"></activity>
         <activity android:name=".SuppleInfo.SuppleNameActivity"></activity>
+        <activity android:name=".SuppleInfo.SuppleSchoolActivity"></activity>
+        <activity android:name=".SuppleInfo.ChoiceSchoolActivity"></activity>
     </application>
 
 </manifest>

@@ -12,28 +12,35 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="110dp"
+            android:src="@drawable/sup_info"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColor="#333333"
-            android:textSize="18dp"
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:text="欢迎使用" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
+            android:textSize="15sp"
+            android:textColor="@color/text_color"
             android:text="你个人信息不完善,我们一起来补充下吧" />
 
         <Button
             android:id="@+id/bt_supple_info"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="55dp"
             android:background="@drawable/login_bt_seleter"
             android:textColor="@color/white"
             android:textSize="16dp"

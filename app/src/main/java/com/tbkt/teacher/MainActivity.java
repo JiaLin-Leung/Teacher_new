@@ -120,7 +120,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
                 startActivity(intent);
                 break;
             case R.id.tosaoyisao:
-                //去摇一摇
+                //去扫一扫
                 ARouter.getInstance().build(Content.GOTO_SCAN).navigation();
                 break;
         }
